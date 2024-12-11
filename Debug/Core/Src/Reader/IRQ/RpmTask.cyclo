@@ -1,0 +1,9 @@
+../Core/Inc/Reader/IRQ/IRQTask.h:12:7:IRQTask::~IRQTask()	1
+../Core/Inc/Reader/IRQ/IRQTask.h:12:7:virtual IRQTask::~IRQTask()	1
+../Core/Src/Reader/IRQ/RpmTask.cpp:10:1:RpmTask::RpmTask(uint16_t)	1
+../Core/Src/Reader/IRQ/RpmTask.cpp:16:6:virtual bool RpmTask::isExactly(uint16_t)	1
+../Core/Src/Reader/IRQ/RpmTask.cpp:20:10:uint16_t RpmTask::getValue()	2
+../Core/Src/Reader/IRQ/RpmTask.cpp:26:6:void RpmTask::setScale(uint16_t)	1
+../Core/Src/Reader/IRQ/RpmTask.cpp:30:6:virtual void RpmTask::taskCallback()	1
+../Core/Inc/Reader/IRQ/RpmTask.h:12:7:RpmTask::~RpmTask()	1
+../Core/Inc/Reader/IRQ/RpmTask.h:12:7:virtual RpmTask::~RpmTask()	1

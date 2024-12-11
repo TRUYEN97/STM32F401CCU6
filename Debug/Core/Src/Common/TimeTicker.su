@@ -1,0 +1,6 @@
+../Core/Src/Common/TimeTicker.cpp:9:1:TimeTicker::TimeTicker(TickType_t)	16	static
+../Core/Src/Common/TimeTicker.cpp:13:12:virtual TickType_t TimeTicker::getCurrentTimeMS()	16	static
+../Core/Src/Common/TimeTicker.cpp:17:6:void TimeTicker::reset()	16	static
+../Core/Src/Common/TimeTicker.cpp:21:6:void TimeTicker::start(TickType_t)	16	static
+../Core/Src/Common/TimeTicker.cpp:26:6:void TimeTicker::setDelayTime(TickType_t)	16	static
+../Core/Src/Common/TimeTicker.cpp:30:6:bool TimeTicker::onTime()	16	static

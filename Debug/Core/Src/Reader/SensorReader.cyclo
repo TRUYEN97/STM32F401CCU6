@@ -1,0 +1,18 @@
+../Core/Inc/Model/CarData.h:14:8:constexpr CarData::CarData()	1
+../Core/Inc/Model/SersorData.h:12:8:SensorData::SensorData()	1
+../Core/Inc/Reader/IRQ/IRQTask.h:12:7:IRQTask::~IRQTask()	1
+../Core/Inc/Reader/IRQ/IRQTask.h:12:7:virtual IRQTask::~IRQTask()	1
+../Core/Src/Reader/SensorReader.cpp:11:1:SensorReader::SensorReader()	1
+../Core/Src/Reader/SensorReader.cpp:22:1:SensorReader::~SensorReader()	1
+../Core/Src/Reader/SensorReader.cpp:22:1:virtual SensorReader::~SensorReader()	1
+../Core/Src/Reader/SensorReader.cpp:25:6:void SensorReader::handleInterrupt(uint16_t)	1
+../Core/Src/Reader/SensorReader.cpp:30:19:const SensorData& SensorReader::getSensorData() const	1
+../Core/Src/Reader/SensorReader.cpp:34:15:static SensorReader& SensorReader::getInstance()	5
+../Core/Src/Reader/SensorReader.cpp:49:5:int SensorReader::getGearNumber()	7
+../Core/Src/Reader/SensorReader.cpp:74:6:virtual void SensorReader::run()	2
+../Core/Src/Reader/SensorReader.cpp:94:6:virtual void SensorReader::stop()	1
+../Core/Src/Reader/SensorReader.cpp:100:6:void HAL_GPIO_EXTI_Callback(uint16_t)	1
+../Core/Inc/Reader/IRQ/EncoderTash.h:15:7:EncoderTask::~EncoderTask()	1
+../Core/Inc/Reader/IRQ/EncoderTash.h:15:7:virtual EncoderTask::~EncoderTask()	1
+../Core/Inc/Reader/IRQ/RpmTask.h:12:7:RpmTask::~RpmTask()	1
+../Core/Inc/Reader/IRQ/RpmTask.h:12:7:virtual RpmTask::~RpmTask()	1

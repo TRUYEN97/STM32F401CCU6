@@ -1,0 +1,4 @@
+../Core/Src/Reader/IRQ/IRQTask.cpp:9:1:IRQTask::IRQTask(const char*, void (*)(void*), void*, uint16_t, UBaseType_t)	32	static
+../Core/Src/Reader/IRQ/IRQTask.cpp:15:6:void IRQTask::interruptCallback(uint16_t)	24	static,ignoring_inline_asm
+../Core/Src/Reader/IRQ/IRQTask.cpp:23:6:virtual void IRQTask::taskCallback()	16	static
+../Core/Src/Reader/IRQ/IRQTask.cpp:29:6:virtual void IRQTask::run()	16	static
