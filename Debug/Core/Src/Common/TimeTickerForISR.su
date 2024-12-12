@@ -1,0 +1,1 @@
+../Core/Src/Common/TimeTickerForISR.cpp:9:12:virtual TickType_t TimeTickerForISR::getCurrentTimeMS()	16	static

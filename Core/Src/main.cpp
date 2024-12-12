@@ -17,9 +17,11 @@
  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <Reader/SensorReader.h>
 #include "main.h"
 #include "cmsis_os.h"
+#include "usb_device.h"
+#include "usbd_cdc_if.h"
+#include "Reader/SensorReader.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -45,7 +47,7 @@
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = { .name = "defaultTask",
-		.stack_size = 128 * 4, .priority = (osPriority_t) osPriorityNormal, };
+		.stack_size = 255 * 4, .priority = (osPriority_t) osPriorityNormal, };
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -68,7 +70,6 @@ void StartDefaultTask(void *argument);
  * @brief  The application entry point.
  * @retval int
  */
-
 int main(void) {
 
 	/* USER CODE BEGIN 1 */
@@ -167,7 +168,7 @@ void SystemClock_Config(void) {
 	RCC_OscInitStruct.PLL.PLLM = 25;
 	RCC_OscInitStruct.PLL.PLLN = 336;
 	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
-	RCC_OscInitStruct.PLL.PLLQ = 4;
+	RCC_OscInitStruct.PLL.PLLQ = 7;
 	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
 		Error_Handler();
 	}
@@ -217,7 +218,7 @@ static void MX_GPIO_Init(void) {
 	GPIO_InitStruct.Pin = GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4
 			| GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7;
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 	/*Configure GPIO pins : PB0 PB1 PB2 */
@@ -231,7 +232,7 @@ static void MX_GPIO_Init(void) {
 	GPIO_InitStruct.Pin = GPIO_PIN_10 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14
 			| GPIO_PIN_15;
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 	/* EXTI interrupt init*/
@@ -260,10 +261,27 @@ static void MX_GPIO_Init(void) {
  */
 /* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void *argument) {
+	/* init code for USB_DEVICE */
 	/* USER CODE BEGIN 5 */
 	/* Infinite loop */
+	/* init code for USB_DEVICE */
+	MX_USB_DEVICE_Init();
+	uint16_t counter;
+	counter = 0;
+	uint8_t data[100];
+	/* USER CODE BEGIN 5 */
+	/* Infinite loop */
+	const SensorModel &sensorModel =
+			SensorReader::getInstance().getSensorModel();
+	const EncodeModel &encodeModel = sensorModel.getEncodeModel();
 	for (;;) {
-		osDelay(1);
+		uint16_t t = osKernelSysTick() / 1000;
+		counter++;
+		sprintf((char*) data, "%d: Speed: %.3f, Distance: %.3f, RPM: %d \n\r",
+				t, encodeModel.getSpeed(), encodeModel.getDistance(),
+				sensorModel.getRpm());
+		CDC_Transmit_FS(data, strlen((char*) data));
+		osDelay(100);
 	}
 	/* USER CODE END 5 */
 }

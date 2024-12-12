@@ -1,6 +1,6 @@
 Core/Src/Reader/IRQ/EncoderTask.o: ../Core/Src/Reader/IRQ/EncoderTask.cpp \
- ../Core/Inc/Reader/IRQ/EncoderTash.h ../Core/Inc/Reader/IRQ/IRQTask.h \
- ../Core/Inc/MyRTOSTask.h \
+ ../Core/Inc/Reader/IRQ/EncoderTash.h ../Core/Inc/Model/EncodeModel.h \
+ ../Core/Inc/Reader/IRQ/IRQTask.h ../Core/Inc/MyRTOSTask.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -41,8 +41,12 @@ Core/Src/Reader/IRQ/EncoderTask.o: ../Core/Src/Reader/IRQ/EncoderTask.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Core/Inc/Model/CarData.h
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+ ../Core/Inc/Common/TimeTicker.h
 ../Core/Inc/Reader/IRQ/EncoderTash.h:
+../Core/Inc/Model/EncodeModel.h:
 ../Core/Inc/Reader/IRQ/IRQTask.h:
 ../Core/Inc/MyRTOSTask.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
@@ -86,4 +90,7 @@ Core/Src/Reader/IRQ/EncoderTask.o: ../Core/Src/Reader/IRQ/EncoderTask.cpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
-../Core/Inc/Model/CarData.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
+../Core/Inc/Common/TimeTicker.h:

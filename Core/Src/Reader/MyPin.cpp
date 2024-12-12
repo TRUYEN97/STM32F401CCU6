@@ -7,45 +7,50 @@
 
 #include "Reader/MyPin.h"
 
-MyPin::MyPin(GPIO_TypeDef *port, uint16_t pin) :
-		port(port), pin(pin) {
+MyPin::MyPin(GPIO_TypeDef *port, uint16_t pin, TickType_t holdTime) :
+		port(port), pin(pin), timer(holdTime) {
 }
 
-bool MyPin::equalPin(uint16_t pin){
+bool MyPin::equalPin(uint16_t pin) {
 	return pin == this->pin;
+}
+
+GPIO_PinState MyPin::isValueWithHoldSignal(bool value) {
+	if (value == false) {
+		if (!this->timer.onTime()) {
+			return GPIO_PIN_RESET;
+		} else {
+			return GPIO_PIN_SET;
+		}
+	} else {
+		this->timer.reset();
+		return GPIO_PIN_SET;
+	}
+}
+
+void MyPin::setHoldSignalTime(TickType_t holdTime) {
+	this->timer.setDelayTime(holdTime);
 }
 
 GPIO_PinState MyPin::readValue() {
 	if (!port) {
 		return GPIO_PIN_RESET;
 	}
-	return HAL_GPIO_ReadPin(port, pin);
+	return isValueWithHoldSignal(HAL_GPIO_ReadPin(port, pin));
 }
 
-bool MyPin::readValueWithRTOSDebounce(bool reverse) {
+GPIO_PinState MyPin::readValueWithDebounce(bool reverse) {
 	if (!port) {
-		return reverse;
+		return GPIO_PIN_RESET;
 	}
+	GPIO_PinState rs = GPIO_PIN_RESET;
 	if (HAL_GPIO_ReadPin(port, pin) != reverse) {
 		vTaskDelay(pdMS_TO_TICKS(30));
 		if (HAL_GPIO_ReadPin(port, pin) != reverse) {
-			return true;
+			rs = GPIO_PIN_SET;
 		}
 	}
-	return false;
-}
-
-bool MyPin::readValueWithDebounce(bool reverse) {
-	if (!port) {
-		return reverse;
-	}
-	if (HAL_GPIO_ReadPin(port, pin) != reverse) {
-		HAL_Delay(30);
-		if (HAL_GPIO_ReadPin(port, pin) != reverse) {
-			return true;
-		}
-	}
-	return false;
+	return this->timer.getDelayTime() > 0 ? isValueWithHoldSignal(rs) : rs;
 }
 
 void MyPin::writeValue(bool value) {

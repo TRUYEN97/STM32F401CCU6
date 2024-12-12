@@ -1,0 +1,8 @@
+../Core/Src/Model/EncodeModel.cpp:9:1:EncodeModel::EncodeModel()	16	static
+../Core/Src/Model/EncodeModel.cpp:13:7:float EncodeModel::getDistance() const	16	static
+../Core/Src/Model/EncodeModel.cpp:16:7:float EncodeModel::getSpeed() const	16	static
+../Core/Src/Model/EncodeModel.cpp:19:7:float EncodeModel::getCarStatus() const	16	static
+../Core/Src/Model/EncodeModel.cpp:22:6:void EncodeModel::setDistance(float)	16	static
+../Core/Src/Model/EncodeModel.cpp:25:6:void EncodeModel::setSpeed(float)	16	static
+../Core/Src/Model/EncodeModel.cpp:28:6:void EncodeModel::setCarStatus(CarStatus)	16	static
+../Core/Src/Model/EncodeModel.cpp:31:6:void EncodeModel::resetDistance()	16	static

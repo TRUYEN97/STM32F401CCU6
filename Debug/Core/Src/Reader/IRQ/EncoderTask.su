@@ -1,10 +1,9 @@
 ../Core/Inc/Reader/IRQ/IRQTask.h:12:7:IRQTask::~IRQTask()	16	static
 ../Core/Inc/Reader/IRQ/IRQTask.h:12:7:virtual IRQTask::~IRQTask()	16	static
-../Core/Inc/Model/CarData.h:14:8:constexpr CarData::CarData()	16	static
 ../Core/Src/Reader/IRQ/EncoderTask.cpp:3:1:EncoderTask::EncoderTask(double)	32	static
-../Core/Src/Reader/IRQ/EncoderTask.cpp:10:6:virtual bool EncoderTask::isExactly(uint16_t)	16	static
-../Core/Src/Reader/IRQ/EncoderTask.cpp:21:6:void EncoderTask::setScale(double)	24	static
-../Core/Src/Reader/IRQ/EncoderTask.cpp:25:6:virtual void EncoderTask::taskCallback()	16	static
-../Core/Src/Reader/IRQ/EncoderTask.cpp:37:16:const CarData& EncoderTask::getCarData()	24	static
-../Core/Inc/Reader/IRQ/EncoderTash.h:15:7:EncoderTask::~EncoderTask()	16	static
-../Core/Inc/Reader/IRQ/EncoderTash.h:15:7:virtual EncoderTask::~EncoderTask()	16	static
+../Core/Src/Reader/IRQ/EncoderTask.cpp:11:6:virtual bool EncoderTask::isExactly(uint16_t)	16	static
+../Core/Src/Reader/IRQ/EncoderTask.cpp:22:6:void EncoderTask::setScale(double)	24	static
+../Core/Src/Reader/IRQ/EncoderTask.cpp:26:6:virtual void EncoderTask::taskCallback()	16	static
+../Core/Src/Reader/IRQ/EncoderTask.cpp:38:14:EncodeModel* EncoderTask::getEncoderModel()	48	static
+../Core/Inc/Reader/IRQ/EncoderTash.h:16:7:EncoderTask::~EncoderTask()	16	static
+../Core/Inc/Reader/IRQ/EncoderTash.h:16:7:virtual EncoderTask::~EncoderTask()	16	static

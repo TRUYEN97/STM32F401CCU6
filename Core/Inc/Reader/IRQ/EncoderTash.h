@@ -8,9 +8,10 @@
 #ifndef INC_READER_IRQ_ENCODERTASH_H_
 #define INC_READER_IRQ_ENCODERTASH_H_
 
+#include <Model/EncodeModel.h>
 #include "IRQTask.h"
 #include "Reader/MyPin.h"
-#include "Model/CarData.h"
+#include "Common/TimeTicker.h"
 
 class EncoderTask: public IRQTask {
 	MyPin aPin;
@@ -18,7 +19,8 @@ class EncoderTask: public IRQTask {
 	int32_t count;
 	bool hasCallA;
 	double scala;
-	CarData carData;
+	EncodeModel encoderModel;
+	TimeTicker timer;
 protected:
 	void callA();
 	void callB();
@@ -27,7 +29,7 @@ protected:
 public:
 	void setScale(double scale);
 	EncoderTask(double scala = 1);
-	const CarData& getCarData();
+	EncodeModel* getEncoderModel();
 };
 
 #endif /* INC_READER_IRQ_ENCODERTASH_H_ */

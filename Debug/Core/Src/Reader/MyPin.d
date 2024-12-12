@@ -27,6 +27,9 @@ Core/Src/Reader/MyPin.o: ../Core/Src/Reader/MyPin.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -35,7 +38,8 @@ Core/Src/Reader/MyPin.o: ../Core/Src/Reader/MyPin.cpp \
  ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ ../Core/Inc/Common/TimeTicker.h
 ../Core/Inc/Reader/MyPin.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -65,6 +69,9 @@ Core/Src/Reader/MyPin.o: ../Core/Src/Reader/MyPin.cpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -74,3 +81,4 @@ Core/Src/Reader/MyPin.o: ../Core/Src/Reader/MyPin.cpp \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+../Core/Inc/Common/TimeTicker.h:

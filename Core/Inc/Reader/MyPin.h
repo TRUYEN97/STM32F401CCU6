@@ -11,16 +11,19 @@
 #include "main.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "Common/TimeTicker.h"
 
 class MyPin {
 	GPIO_TypeDef *port;
 	const uint16_t pin;
+	TimeTicker timer;
+	GPIO_PinState isValueWithHoldSignal(bool value);
 public:
-	MyPin(GPIO_TypeDef *port, uint16_t pin);
+	MyPin(GPIO_TypeDef *port, uint16_t pin, TickType_t holdTime = 0);
+	void setHoldSignalTime(TickType_t holdTime);
 	bool equalPin(uint16_t pin);
 	GPIO_PinState readValue();
-	bool readValueWithRTOSDebounce(bool reverse = false);
-	bool readValueWithDebounce(bool reverse = false);
+	GPIO_PinState readValueWithDebounce(bool reverse = false);
 	void writeValue(bool value);
 	void action(void (*fuc)(GPIO_TypeDef *port, uint8_t pin));
 

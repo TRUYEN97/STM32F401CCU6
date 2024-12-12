@@ -55,6 +55,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
 extern TIM_HandleTypeDef htim1;
 
 /* USER CODE BEGIN EV */
@@ -85,13 +86,6 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
-    __asm volatile (
-        "TST lr, #4       \n"
-        "ITE EQ           \n"
-        "MRSEQ r0, MSP    \n"
-        "MRSNE r0, PSP    \n"
-        "B hard_fault_handler_c \n"
-    );
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
@@ -206,19 +200,7 @@ void EXTI2_IRQHandler(void)
 
   /* USER CODE END EXTI2_IRQn 1 */
 }
-void hard_fault_handler_c(uint32_t *stack) {
-    uint32_t r0  = stack[0];
-    uint32_t r1  = stack[1];
-    uint32_t r2  = stack[2];
-    uint32_t r3  = stack[3];
-    uint32_t r12 = stack[4];
-    uint32_t lr  = stack[5];
-    uint32_t pc  = stack[6];
-    uint32_t psr = stack[7];
 
-    // Đặt breakpoint ở đây để kiểm tra giá trị các thanh ghi
-    while (1);
-}
 /**
   * @brief This function handles TIM1 update interrupt and TIM10 global interrupt.
   */
@@ -231,6 +213,20 @@ void TIM1_UP_TIM10_IRQHandler(void)
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */
 
   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USB On The Go FS global interrupt.
+  */
+void OTG_FS_IRQHandler(void)
+{
+  /* USER CODE BEGIN OTG_FS_IRQn 0 */
+
+  /* USER CODE END OTG_FS_IRQn 0 */
+  HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
+  /* USER CODE BEGIN OTG_FS_IRQn 1 */
+
+  /* USER CODE END OTG_FS_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

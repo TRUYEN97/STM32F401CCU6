@@ -1,6 +1,8 @@
 ../Core/Src/Common/TimeTicker.cpp:9:1:TimeTicker::TimeTicker(TickType_t)	1
 ../Core/Src/Common/TimeTicker.cpp:13:12:virtual TickType_t TimeTicker::getCurrentTimeMS()	1
-../Core/Src/Common/TimeTicker.cpp:17:6:void TimeTicker::reset()	1
-../Core/Src/Common/TimeTicker.cpp:21:6:void TimeTicker::start(TickType_t)	1
-../Core/Src/Common/TimeTicker.cpp:26:6:void TimeTicker::setDelayTime(TickType_t)	1
-../Core/Src/Common/TimeTicker.cpp:30:6:bool TimeTicker::onTime()	1
+../Core/Src/Common/TimeTicker.cpp:17:12:TickType_t TimeTicker::getDelta()	2
+../Core/Src/Common/TimeTicker.cpp:25:12:TickType_t TimeTicker::getDelayTime() const	1
+../Core/Src/Common/TimeTicker.cpp:29:6:void TimeTicker::reset()	1
+../Core/Src/Common/TimeTicker.cpp:33:6:void TimeTicker::start(TickType_t)	1
+../Core/Src/Common/TimeTicker.cpp:38:6:void TimeTicker::setDelayTime(TickType_t)	1
+../Core/Src/Common/TimeTicker.cpp:42:6:bool TimeTicker::onTime()	1

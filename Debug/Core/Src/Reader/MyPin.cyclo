@@ -1,7 +1,8 @@
-../Core/Src/Reader/MyPin.cpp:10:1:MyPin::MyPin(GPIO_TypeDef*, uint16_t)	1
+../Core/Src/Reader/MyPin.cpp:10:1:MyPin::MyPin(GPIO_TypeDef*, uint16_t, TickType_t)	1
 ../Core/Src/Reader/MyPin.cpp:14:6:bool MyPin::equalPin(uint16_t)	1
-../Core/Src/Reader/MyPin.cpp:18:15:GPIO_PinState MyPin::readValue()	2
-../Core/Src/Reader/MyPin.cpp:25:6:bool MyPin::readValueWithRTOSDebounce(bool)	4
-../Core/Src/Reader/MyPin.cpp:38:6:bool MyPin::readValueWithDebounce(bool)	4
-../Core/Src/Reader/MyPin.cpp:51:6:void MyPin::writeValue(bool)	3
-../Core/Src/Reader/MyPin.cpp:58:6:void MyPin::action(void (*)(GPIO_TypeDef*, uint8_t))	2
+../Core/Src/Reader/MyPin.cpp:18:15:GPIO_PinState MyPin::isValueWithHoldSignal(bool)	3
+../Core/Src/Reader/MyPin.cpp:31:6:void MyPin::setHoldSignalTime(TickType_t)	1
+../Core/Src/Reader/MyPin.cpp:35:15:GPIO_PinState MyPin::readValue()	2
+../Core/Src/Reader/MyPin.cpp:42:15:GPIO_PinState MyPin::readValueWithDebounce(bool)	5
+../Core/Src/Reader/MyPin.cpp:56:6:void MyPin::writeValue(bool)	3
+../Core/Src/Reader/MyPin.cpp:63:6:void MyPin::action(void (*)(GPIO_TypeDef*, uint8_t))	2

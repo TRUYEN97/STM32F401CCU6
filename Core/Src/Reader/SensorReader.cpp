@@ -15,8 +15,10 @@ SensorReader::SensorReader() :
 				MyPin(GPIOA, GPIO_PIN_4)), s1Pin(MyPin(GPIOA, GPIO_PIN_5)), s2Pin(
 				MyPin(GPIOA, GPIO_PIN_6)), s3Pin(MyPin(GPIOA, GPIO_PIN_7)), s4Pin(
 				MyPin(GPIOB, GPIO_PIN_10)), t1Pin(MyPin(GPIOB, GPIO_PIN_12)), t2Pin(
-				MyPin(GPIOB, GPIO_PIN_13)), t3Pin(MyPin(GPIOB, GPIO_PIN_14)), sensorData(), encoderTask(
-				EncoderTask(10.5)), rpmTask(RpmTask(1)) {
+				MyPin(GPIOB, GPIO_PIN_13)), t3Pin(MyPin(GPIOB, GPIO_PIN_14)), sensorModel(), encoderTask(
+				EncoderTask(100.5)), rpmTask(RpmTask(1)) {
+	EncodeModel *enncoderModel = this->encoderTask.getEncoderModel();
+	this->sensorModel.setEncodeModel(enncoderModel);
 }
 
 SensorReader::~SensorReader() {
@@ -27,8 +29,8 @@ void SensorReader::handleInterrupt(uint16_t pin) {
 	this->rpmTask.interruptCallback(pin);
 }
 
-const SensorData& SensorReader::getSensorData() const {
-	return sensorData;
+const SensorModel& SensorReader::getSensorModel() const {
+	return this->sensorModel;
 }
 
 SensorReader& SensorReader::getInstance() {
@@ -47,10 +49,10 @@ SensorReader& SensorReader::getInstance() {
 }
 
 int SensorReader::getGearNumber() {
-	bool s1 = this->s1Pin.readValueWithRTOSDebounce(), s2 =
-			this->s2Pin.readValueWithRTOSDebounce(), s3 =
-			this->s3Pin.readValueWithRTOSDebounce(), s4 =
-			this->s4Pin.readValueWithRTOSDebounce();
+	bool s1 = this->s1Pin.readValueWithDebounce(), s2 =
+			this->s2Pin.readValueWithDebounce(), s3 =
+			this->s3Pin.readValueWithDebounce(), s4 =
+			this->s4Pin.readValueWithDebounce();
 	if (s3) {
 		if (s1) {
 			return 3;
@@ -76,17 +78,18 @@ void SensorReader::run() {
 	this->rpmTask.start();
 	this->stopSt = false;
 	while (!this->stopSt) {
-		this->sensorData.at = this->atPin.readValueWithRTOSDebounce();
-		this->sensorData.pt = this->ptPin.readValueWithRTOSDebounce();
-		this->sensorData.cm = this->cmPin.readValueWithRTOSDebounce();
-		this->sensorData.nt = this->ntPin.readValueWithRTOSDebounce();
-		this->sensorData.np = this->npPin.readValueWithRTOSDebounce();
-		this->sensorData.t1 = this->t1Pin.readValueWithRTOSDebounce();
-		this->sensorData.t2 = this->t2Pin.readValueWithRTOSDebounce();
-		this->sensorData.t3 = this->t3Pin.readValueWithRTOSDebounce();
-		this->sensorData.gear = this->getGearNumber();
-		this->sensorData.rpm = this->rpmTask.getValue();
-		this->sensorData.cardata = this->encoderTask.getCarData();
+		this->sensorModel.setAt(this->atPin.readValueWithDebounce());
+		this->sensorModel.setPt(this->ptPin.readValueWithDebounce());
+		this->sensorModel.setCm(this->cmPin.readValueWithDebounce());
+		this->sensorModel.setNt(this->ntPin.readValueWithDebounce());
+		this->sensorModel.setNp(this->npPin.readValueWithDebounce());
+		this->sensorModel.setT1(this->t1Pin.readValueWithDebounce());
+		this->sensorModel.setT2(this->t2Pin.readValueWithDebounce());
+		this->sensorModel.setT3(this->t3Pin.readValueWithDebounce());
+		this->sensorModel.setGear(this->getGearNumber());
+		this->sensorModel.setRpm(this->rpmTask.getValue());
+		this->encoderTask.getEncoderModel();
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 		delay(100);
 	}
 }

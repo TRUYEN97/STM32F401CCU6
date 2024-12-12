@@ -1,25 +1,26 @@
 #include "Reader/IRQ/EncoderTash.h"
 
 EncoderTask::EncoderTask(double scala) :
-		IRQTask("EncoderTask", nullptr, nullptr, 128, 1), aPin(MyPin(GPIOB, GPIO_PIN_0)), bPin(
-				MyPin(GPIOB, GPIO_PIN_1)), scala(scala), carData() {
+		IRQTask("EncoderTask", nullptr, nullptr, 64, 1), aPin(
+				MyPin(GPIOB, GPIO_PIN_0)), bPin(MyPin(GPIOB, GPIO_PIN_1)), scala(
+				scala == 0 ? 1.0f : scala), encoderModel(), timer(200) {
 	this->count = 0;
 	this->hasCallA = false;
 }
 
 bool EncoderTask::isExactly(uint16_t pin) {
-	if (this->aPin.equalPin(pin)) {
+	if (this->aPin.equalPin(pin) && this->aPin.readValue()) {
 		this->hasCallA = true;
 		return true;
-	} else if (this->bPin.equalPin(pin)) {
+	} else if (this->bPin.equalPin(pin) && bPin.readValue()) {
 		this->hasCallA = false;
 		return true;
 	}
 	return false;
 }
 
-void EncoderTask::setScale(double scala){
-	this->scala = scala;
+void EncoderTask::setScale(double scala) {
+	this->scala = scala == 0 ? 1.0f : scala;
 }
 
 void EncoderTask::taskCallback() {
@@ -34,18 +35,28 @@ void EncoderTask::taskCallback() {
 	}
 }
 
-const CarData& EncoderTask::getCarData() {
-	int32_t tempV = this->count;
-	if (tempV == 0) {
-		carData.distance = 0;
-		carData.status = CAR_STOP;
-	} else {
-		carData.distance = tempV / this->scala == 0 ? 1.0f : this->scala;
-		if (tempV > 0) {
-			carData.status = CAR_FORWARD;
+EncodeModel* EncoderTask::getEncoderModel() {
+	if (!this->timer.onTime()) {
+		int32_t tempCount = this->count;
+		float deltaTimeS = this->timer.getDelta() / 1000.0;
+		this->count = 0;
+		this->timer.reset();
+		if (tempCount == 0 || deltaTimeS == 0) {
+			this->encoderModel.setSpeed(0);
+			this->encoderModel.setCarStatus(CAR_STOP);
 		} else {
-			carData.status = CAR_BACKWARD;
+			this->encoderModel.setDistance(
+					this->encoderModel.getDistance() + tempCount / this->scala);
+			if (tempCount > 0) {
+				this->encoderModel.setSpeed(
+						tempCount * 3.6 / this->scala / deltaTimeS);
+				this->encoderModel.setCarStatus(CAR_FORWARD);
+			} else {
+				this->encoderModel.setSpeed(
+						tempCount * -3.6 / this->scala / deltaTimeS);
+				this->encoderModel.setCarStatus(CAR_BACKWARD);
+			}
 		}
 	}
-	return this->carData;
+	return &this->encoderModel;
 }

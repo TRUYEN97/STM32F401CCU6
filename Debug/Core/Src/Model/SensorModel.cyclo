@@ -1,0 +1,23 @@
+../Core/Src/Model/SensorModel.cpp:10:1:SensorModel::SensorModel()	1
+../Core/Src/Model/SensorModel.cpp:15:6:bool SensorModel::isAt() const	1
+../Core/Src/Model/SensorModel.cpp:19:6:void SensorModel::setAt(bool)	1
+../Core/Src/Model/SensorModel.cpp:23:20:const EncodeModel& SensorModel::getEncodeModel() const	1
+../Core/Src/Model/SensorModel.cpp:27:6:void SensorModel::setEncodeModel(EncodeModel*)	1
+../Core/Src/Model/SensorModel.cpp:31:6:bool SensorModel::isCm() const	1
+../Core/Src/Model/SensorModel.cpp:35:6:void SensorModel::setCm(bool)	1
+../Core/Src/Model/SensorModel.cpp:39:9:uint8_t SensorModel::getGear() const	1
+../Core/Src/Model/SensorModel.cpp:43:6:void SensorModel::setGear(uint8_t)	1
+../Core/Src/Model/SensorModel.cpp:47:6:bool SensorModel::isNp() const	1
+../Core/Src/Model/SensorModel.cpp:51:6:void SensorModel::setNp(bool)	1
+../Core/Src/Model/SensorModel.cpp:55:6:bool SensorModel::isNt() const	1
+../Core/Src/Model/SensorModel.cpp:59:6:void SensorModel::setNt(bool)	1
+../Core/Src/Model/SensorModel.cpp:63:6:bool SensorModel::isPt() const	1
+../Core/Src/Model/SensorModel.cpp:67:6:void SensorModel::setPt(bool)	1
+../Core/Src/Model/SensorModel.cpp:71:10:uint16_t SensorModel::getRpm() const	1
+../Core/Src/Model/SensorModel.cpp:75:6:void SensorModel::setRpm(uint16_t)	1
+../Core/Src/Model/SensorModel.cpp:79:6:bool SensorModel::isT1() const	1
+../Core/Src/Model/SensorModel.cpp:83:6:void SensorModel::setT1(bool)	1
+../Core/Src/Model/SensorModel.cpp:87:6:bool SensorModel::isT2() const	1
+../Core/Src/Model/SensorModel.cpp:91:6:void SensorModel::setT2(bool)	1
+../Core/Src/Model/SensorModel.cpp:95:6:bool SensorModel::isT3() const	1
+../Core/Src/Model/SensorModel.cpp:99:6:void SensorModel::setT3(bool)	1

@@ -9,10 +9,13 @@
 #define INC_READER_IRQ_RPMTASK_H_
 #include "IRQTask.h"
 #include "Reader/MyPin.h"
+#include "Common/TimeTicker.h"
 class RpmTask: public IRQTask {
 	MyPin rpmPin;
 	uint32_t count;
+	uint32_t rmp;
 	uint16_t scala;
+	TimeTicker timer;
 protected:
 	void taskCallback() override;
 	bool isExactly(uint16_t pin);
