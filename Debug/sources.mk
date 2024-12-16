@@ -39,7 +39,9 @@ CPP_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Core/Src/Common \
+Core/Src/Mode \
 Core/Src/Model \
+Core/Src/Model/Process \
 Core/Src \
 Core/Src/Reader/IRQ \
 Core/Src/Reader \

@@ -21,7 +21,9 @@ RM := rm -rf
 -include Core/Startup/subdir.mk
 -include Core/Src/Reader/IRQ/subdir.mk
 -include Core/Src/Reader/subdir.mk
+-include Core/Src/Model/Process/subdir.mk
 -include Core/Src/Model/subdir.mk
+-include Core/Src/Mode/subdir.mk
 -include Core/Src/Common/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk

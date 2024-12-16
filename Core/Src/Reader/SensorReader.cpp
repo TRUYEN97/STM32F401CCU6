@@ -11,14 +11,15 @@ SemaphoreHandle_t SensorReader::mtx = nullptr;
 SensorReader::SensorReader() :
 		MyRTOSTask("SensorReader", nullptr, nullptr, 128, 1), atPin(
 				MyPin(GPIOA, GPIO_PIN_1)), ptPin(MyPin(GPIOA, GPIO_PIN_2)), cmPin(
-				MyPin(GPIOA, GPIO_PIN_3)), ntPin(MyPin(GPIOA, GPIO_PIN_4)), npPin(
-				MyPin(GPIOA, GPIO_PIN_4)), s1Pin(MyPin(GPIOA, GPIO_PIN_5)), s2Pin(
-				MyPin(GPIOA, GPIO_PIN_6)), s3Pin(MyPin(GPIOA, GPIO_PIN_7)), s4Pin(
+				MyPin(GPIOA, GPIO_PIN_3)), ntPin(MyPin(GPIOA, GPIO_PIN_4, 666)), npPin(
+				MyPin(GPIOA, GPIO_PIN_5, 666)), s1Pin(MyPin(GPIOA, GPIO_PIN_6)), s2Pin(
+				MyPin(GPIOA, GPIO_PIN_7)), s3Pin(MyPin(GPIOA, GPIO_PIN_8)), s4Pin(
 				MyPin(GPIOB, GPIO_PIN_10)), t1Pin(MyPin(GPIOB, GPIO_PIN_12)), t2Pin(
-				MyPin(GPIOB, GPIO_PIN_13)), t3Pin(MyPin(GPIOB, GPIO_PIN_14)), sensorModel(), encoderTask(
+				MyPin(GPIOB, GPIO_PIN_13)), t3Pin(MyPin(GPIOB, GPIO_PIN_14)),
+				sensorModel(ModelManagement::getInstance().getSensorModel()), encoderTask(
 				EncoderTask(100.5)), rpmTask(RpmTask(1)) {
 	EncodeModel *enncoderModel = this->encoderTask.getEncoderModel();
-	this->sensorModel.setEncodeModel(enncoderModel);
+	this->sensorModel->setEncodeModel(enncoderModel);
 }
 
 SensorReader::~SensorReader() {
@@ -29,7 +30,7 @@ void SensorReader::handleInterrupt(uint16_t pin) {
 	this->rpmTask.interruptCallback(pin);
 }
 
-const SensorModel& SensorReader::getSensorModel() const {
+SensorModel* SensorReader::getSensorModel() {
 	return this->sensorModel;
 }
 
@@ -76,18 +77,18 @@ int SensorReader::getGearNumber() {
 void SensorReader::run() {
 	this->encoderTask.start();
 	this->rpmTask.start();
-	this->stopSt = false;
-	while (!this->stopSt) {
-		this->sensorModel.setAt(this->atPin.readValueWithDebounce());
-		this->sensorModel.setPt(this->ptPin.readValueWithDebounce());
-		this->sensorModel.setCm(this->cmPin.readValueWithDebounce());
-		this->sensorModel.setNt(this->ntPin.readValueWithDebounce());
-		this->sensorModel.setNp(this->npPin.readValueWithDebounce());
-		this->sensorModel.setT1(this->t1Pin.readValueWithDebounce());
-		this->sensorModel.setT2(this->t2Pin.readValueWithDebounce());
-		this->sensorModel.setT3(this->t3Pin.readValueWithDebounce());
-		this->sensorModel.setGear(this->getGearNumber());
-		this->sensorModel.setRpm(this->rpmTask.getValue());
+	this->stopTask = false;
+	while (!this->stopTask) {
+		this->sensorModel->setAt(this->atPin.readValueWithDebounce());
+		this->sensorModel->setPt(this->ptPin.readValueWithDebounce());
+		this->sensorModel->setCm(this->cmPin.readValueWithDebounce());
+		this->sensorModel->setNt(this->ntPin.readValueWithDebounce());
+		this->sensorModel->setNp(this->npPin.readValueWithDebounce());
+		this->sensorModel->setT1(this->t1Pin.readValueWithDebounce());
+		this->sensorModel->setT2(this->t2Pin.readValueWithDebounce());
+		this->sensorModel->setT3(this->t3Pin.readValueWithDebounce());
+		this->sensorModel->setGear(this->getGearNumber());
+		this->sensorModel->setRpm(this->rpmTask.getValue());
 		this->encoderTask.getEncoderModel();
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 		delay(100);

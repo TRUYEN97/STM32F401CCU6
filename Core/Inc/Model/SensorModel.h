@@ -21,7 +21,11 @@ public:
 
 	void setAt(bool at);
 
-	const EncodeModel& getEncodeModel() const;
+	EncodeModel& getEncodeModel() const;
+
+	void setDistance(float distance);
+
+	void resetDistance();
 
 	void setEncodeModel(EncodeModel *encodeModel);
 

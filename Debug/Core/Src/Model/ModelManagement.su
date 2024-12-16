@@ -1,0 +1,11 @@
+../Core/Inc/Json/Strings/Adapters/RamString.hpp:34:8:char ArduinoJson::V721HB22::detail::ZeroTerminatedRamString::operator[](size_t) const	16	static
+../Core/Inc/Json/Strings/Adapters/RamString.hpp:102:8:char ArduinoJson::V721HB22::detail::SizedRamString::operator[](size_t) const	16	static
+C:\ST\STM32CubeIDE_1.17.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130\tools\arm-none-eabi\include\c++\12.3.1\arm-none-eabi\thumb\v7e-m+fp\hard\bits\gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
+../Core/Src/Model/ModelManagement.cpp:12:1:ModelManagement::ModelManagement()	24	static
+../Core/Src/Model/ModelManagement.cpp:16:1:ModelManagement::~ModelManagement()	16	static
+../Core/Src/Model/ModelManagement.cpp:20:18:static ModelManagement& ModelManagement::getInstance()	16	static
+../Core/Src/Model/ModelManagement.cpp:34:14:SensorModel* ModelManagement::getSensorModel()	16	static
+../Core/Src/Model/ModelManagement.cpp:38:16:TestModeModel* ModelManagement::getTestModeModel()	16	static
+../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = StaticStringAdapter]	40	static
+../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = JsonStringAdapter]	40	static
+../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = SizedRamString]	40	static

@@ -21,7 +21,7 @@ protected:
 	UBaseType_t priority;
 	static void taskFunction(void *params);
 	virtual void run();
-	bool stopSt;
+	bool stopTask;
 	void delay(TickType_t timeMs);
 
 public:

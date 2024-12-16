@@ -1,5 +1,6 @@
-Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/Json.h \
+ ../Core/Inc/Json/Json.hpp ../Core/Inc/Json/Configuration.hpp \
+ ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -49,14 +50,25 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
- ../Core/Inc/Reader/SensorReader.h ../Core/Inc/Model/SensorModel.h \
- ../Core/Inc/Model/EncodeModel.h ../Core/Inc/MyRTOSTask.h \
- ../Core/Inc/Reader/MyPin.h ../Core/Inc/Common/TimeTicker.h \
- ../Core/Inc/Reader/IRQ/RpmTask.h ../Core/Inc/Reader/IRQ/IRQTask.h \
+ ../Core/Inc/Reader/SensorReader.h ../Core/Inc/Model/ModelManagement.h \
+ ../Core/Inc/Model/Process/TestModeModel.h \
+ ../Core/Inc/Model/Process/LocationModel.h \
+ ../Core/Inc/Model/Process/BaseModel.h \
+ ../Core/Inc/Model/Process/UserModel.h \
+ ../Core/Inc/Model/Process/BaseModel.h \
+ ../Core/Inc/Model/Process/ContestModel.h \
+ ../Core/Inc/Model/Process/ErrorCode.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- ../Core/Inc/Reader/MyPin.h ../Core/Inc/Reader/IRQ/EncoderTash.h
+ ../Core/Inc/Model/SensorModel.h ../Core/Inc/Model/EncodeModel.h \
+ ../Core/Inc/Reader/IRQ/RpmTask.h ../Core/Inc/Reader/IRQ/IRQTask.h \
+ ../Core/Inc/MyRTOSTask.h ../Core/Inc/Reader/MyPin.h \
+ ../Core/Inc/Common/TimeTicker.h ../Core/Inc/Reader/IRQ/EncoderTash.h \
+ ../Core/Inc/Reader/MyPin.h
+../Core/Inc/Json.h:
+../Core/Inc/Json/Json.hpp:
+../Core/Inc/Json/Configuration.hpp:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -110,15 +122,23 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
 ../Core/Inc/Reader/SensorReader.h:
-../Core/Inc/Model/SensorModel.h:
-../Core/Inc/Model/EncodeModel.h:
-../Core/Inc/MyRTOSTask.h:
-../Core/Inc/Reader/MyPin.h:
-../Core/Inc/Common/TimeTicker.h:
-../Core/Inc/Reader/IRQ/RpmTask.h:
-../Core/Inc/Reader/IRQ/IRQTask.h:
+../Core/Inc/Model/ModelManagement.h:
+../Core/Inc/Model/Process/TestModeModel.h:
+../Core/Inc/Model/Process/LocationModel.h:
+../Core/Inc/Model/Process/BaseModel.h:
+../Core/Inc/Model/Process/UserModel.h:
+../Core/Inc/Model/Process/BaseModel.h:
+../Core/Inc/Model/Process/ContestModel.h:
+../Core/Inc/Model/Process/ErrorCode.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+../Core/Inc/Model/SensorModel.h:
+../Core/Inc/Model/EncodeModel.h:
+../Core/Inc/Reader/IRQ/RpmTask.h:
+../Core/Inc/Reader/IRQ/IRQTask.h:
+../Core/Inc/MyRTOSTask.h:
 ../Core/Inc/Reader/MyPin.h:
+../Core/Inc/Common/TimeTicker.h:
 ../Core/Inc/Reader/IRQ/EncoderTash.h:
+../Core/Inc/Reader/MyPin.h:

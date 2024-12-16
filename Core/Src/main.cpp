@@ -17,11 +17,13 @@
  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <Json.h>
 #include "main.h"
 #include "cmsis_os.h"
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
 #include "Reader/SensorReader.h"
+#include "Model/ModelManagement.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -56,6 +58,8 @@ const osThreadAttr_t defaultTask_attributes = { .name = "defaultTask",
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 void StartDefaultTask(void *argument);
+
+JsonDocument doc;
 
 /* USER CODE BEGIN PFP */
 
@@ -266,21 +270,28 @@ void StartDefaultTask(void *argument) {
 	/* Infinite loop */
 	/* init code for USB_DEVICE */
 	MX_USB_DEVICE_Init();
-	uint16_t counter;
-	counter = 0;
 	uint8_t data[100];
 	/* USER CODE BEGIN 5 */
 	/* Infinite loop */
-	const SensorModel &sensorModel =
-			SensorReader::getInstance().getSensorModel();
-	const EncodeModel &encodeModel = sensorModel.getEncodeModel();
+	SensorModel &sensorModel =
+			*ModelManagement::getInstance().getSensorModel();
+	EncodeModel &encodeModel = sensorModel.getEncodeModel();
+	TimeTicker timer(5000);
+	doc["test"] = 0;
 	for (;;) {
-		uint16_t t = osKernelSysTick() / 1000;
-		counter++;
-		sprintf((char*) data, "%d: Speed: %.3f, Distance: %.3f, RPM: %d \n\r",
-				t, encodeModel.getSpeed(), encodeModel.getDistance(),
-				sensorModel.getRpm());
+		doc["test"] = 1;
+		int t = doc["test"].as<int>();
+		sprintf((char*) data,
+				"%d, Speed: %.3f, Distance: %.3f, RPM: %d , NT: %d, NP: %d, CM: %d\n\r", t,
+				encodeModel.getSpeed(), encodeModel.getDistance(),
+				sensorModel.getRpm(), sensorModel.isNt(), sensorModel.isNp(),
+				sensorModel.isCm());
 		CDC_Transmit_FS(data, strlen((char*) data));
+		if (!timer.onTime()) {
+			timer.reset();
+//			sensorModel.setDistance(0);
+			sensorModel.resetDistance();
+		}
 		osDelay(100);
 	}
 	/* USER CODE END 5 */

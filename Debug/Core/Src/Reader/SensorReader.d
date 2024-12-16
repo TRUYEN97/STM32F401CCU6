@@ -1,7 +1,26 @@
 Core/Src/Reader/SensorReader.o: ../Core/Src/Reader/SensorReader.cpp \
- ../Core/Inc/Reader/SensorReader.h ../Core/Inc/Model/SensorModel.h \
- ../Core/Inc/Model/EncodeModel.h ../Core/Inc/main.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ ../Core/Inc/Reader/SensorReader.h ../Core/Inc/Model/ModelManagement.h \
+ ../Core/Inc/Model/Process/TestModeModel.h \
+ ../Core/Inc/Model/Process/LocationModel.h \
+ ../Core/Inc/Model/Process/BaseModel.h ../Core/Inc/Json.h \
+ ../Core/Inc/Json/Json.hpp ../Core/Inc/Json/Configuration.hpp \
+ ../Core/Inc/Model/Process/UserModel.h \
+ ../Core/Inc/Model/Process/BaseModel.h \
+ ../Core/Inc/Model/Process/ContestModel.h \
+ ../Core/Inc/Model/Process/ErrorCode.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ ../Core/Inc/FreeRTOSConfig.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ ../Core/Inc/Model/SensorModel.h ../Core/Inc/Model/EncodeModel.h \
+ ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -31,23 +50,34 @@ Core/Src/Reader/SensorReader.o: ../Core/Src/Reader/SensorReader.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Core/Inc/MyRTOSTask.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
- ../Core/Inc/FreeRTOSConfig.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Core/Inc/Reader/MyPin.h ../Core/Inc/Common/TimeTicker.h \
  ../Core/Inc/Reader/IRQ/RpmTask.h ../Core/Inc/Reader/IRQ/IRQTask.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../Core/Inc/MyRTOSTask.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- ../Core/Inc/Reader/MyPin.h ../Core/Inc/Reader/IRQ/EncoderTash.h
+ ../Core/Inc/Reader/MyPin.h ../Core/Inc/Common/TimeTicker.h \
+ ../Core/Inc/Reader/IRQ/EncoderTash.h ../Core/Inc/Reader/MyPin.h
 ../Core/Inc/Reader/SensorReader.h:
+../Core/Inc/Model/ModelManagement.h:
+../Core/Inc/Model/Process/TestModeModel.h:
+../Core/Inc/Model/Process/LocationModel.h:
+../Core/Inc/Model/Process/BaseModel.h:
+../Core/Inc/Json.h:
+../Core/Inc/Json/Json.hpp:
+../Core/Inc/Json/Configuration.hpp:
+../Core/Inc/Model/Process/UserModel.h:
+../Core/Inc/Model/Process/BaseModel.h:
+../Core/Inc/Model/Process/ContestModel.h:
+../Core/Inc/Model/Process/ErrorCode.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+../Core/Inc/FreeRTOSConfig.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Core/Inc/Model/SensorModel.h:
 ../Core/Inc/Model/EncodeModel.h:
 ../Core/Inc/main.h:
@@ -81,22 +111,11 @@ Core/Src/Reader/SensorReader.o: ../Core/Src/Reader/SensorReader.cpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-../Core/Inc/MyRTOSTask.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
-../Core/Inc/FreeRTOSConfig.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
-../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-../Core/Inc/Reader/MyPin.h:
-../Core/Inc/Common/TimeTicker.h:
 ../Core/Inc/Reader/IRQ/RpmTask.h:
 ../Core/Inc/Reader/IRQ/IRQTask.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+../Core/Inc/MyRTOSTask.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Core/Inc/Reader/MyPin.h:
+../Core/Inc/Common/TimeTicker.h:
 ../Core/Inc/Reader/IRQ/EncoderTash.h:
+../Core/Inc/Reader/MyPin.h:

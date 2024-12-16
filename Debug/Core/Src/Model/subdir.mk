@@ -6,14 +6,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Core/Src/Model/EncodeModel.cpp \
+../Core/Src/Model/ModelManagement.cpp \
 ../Core/Src/Model/SensorModel.cpp 
 
 OBJS += \
 ./Core/Src/Model/EncodeModel.o \
+./Core/Src/Model/ModelManagement.o \
 ./Core/Src/Model/SensorModel.o 
 
 CPP_DEPS += \
 ./Core/Src/Model/EncodeModel.d \
+./Core/Src/Model/ModelManagement.d \
 ./Core/Src/Model/SensorModel.d 
 
 
@@ -24,7 +27,7 @@ Core/Src/Model/%.o Core/Src/Model/%.su Core/Src/Model/%.cyclo: ../Core/Src/Model
 clean: clean-Core-2f-Src-2f-Model
 
 clean-Core-2f-Src-2f-Model:
-	-$(RM) ./Core/Src/Model/EncodeModel.cyclo ./Core/Src/Model/EncodeModel.d ./Core/Src/Model/EncodeModel.o ./Core/Src/Model/EncodeModel.su ./Core/Src/Model/SensorModel.cyclo ./Core/Src/Model/SensorModel.d ./Core/Src/Model/SensorModel.o ./Core/Src/Model/SensorModel.su
+	-$(RM) ./Core/Src/Model/EncodeModel.cyclo ./Core/Src/Model/EncodeModel.d ./Core/Src/Model/EncodeModel.o ./Core/Src/Model/EncodeModel.su ./Core/Src/Model/ModelManagement.cyclo ./Core/Src/Model/ModelManagement.d ./Core/Src/Model/ModelManagement.o ./Core/Src/Model/ModelManagement.su ./Core/Src/Model/SensorModel.cyclo ./Core/Src/Model/SensorModel.d ./Core/Src/Model/SensorModel.o ./Core/Src/Model/SensorModel.su
 
 .PHONY: clean-Core-2f-Src-2f-Model
 

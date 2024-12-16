@@ -19,8 +19,8 @@ float EncodeModel::getSpeed() const {
 float EncodeModel::getCarStatus() const {
 	return this->carStatus;
 }
-void EncodeModel::setDistance(float discance) {
-	this->distance = discance;
+void EncodeModel::setDistance(float distance) {
+	this->distance = distance;
 }
 void EncodeModel::setSpeed(float speed) {
 	this->speed = speed;

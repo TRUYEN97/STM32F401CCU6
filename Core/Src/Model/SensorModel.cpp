@@ -16,11 +16,19 @@ bool SensorModel::isAt() const {
 	return at;
 }
 
+void SensorModel::setDistance(float distance){
+	this->encodeModel->setDistance(distance);
+}
+
+void SensorModel::resetDistance(){
+	this->encodeModel->resetDistance();
+}
+
 void SensorModel::setAt(bool at) {
 	this->at = at;
 }
 
-const EncodeModel& SensorModel::getEncodeModel() const {
+EncodeModel& SensorModel::getEncodeModel() const {
 	return *(this->encodeModel);
 }
 

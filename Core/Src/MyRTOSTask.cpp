@@ -12,7 +12,7 @@ MyRTOSTask::MyRTOSTask(const char *name, void (*runFunction)(void*),
 		taskName(name), runFunction(runFunction), params(params), stackSize(
 				size), priority(priority) {
 	this->taskHandle = nullptr;
-	this->stopSt = false;
+	this->stopTask = false;
 }
 MyRTOSTask::~MyRTOSTask() {
 	if (taskHandle != nullptr) {
@@ -43,14 +43,14 @@ void MyRTOSTask::taskFunction(void *params) {
 }
 
 bool MyRTOSTask::start() {
-	stopSt = false;
+	stopTask = false;
 	BaseType_t result = xTaskCreate(taskFunction, taskName, stackSize, this,
 			priority, &taskHandle);
 	return result == pdPASS;
 }
 
 void MyRTOSTask::stop() {
-	stopSt = true;
+	stopTask = true;
 	if (taskHandle != nullptr) {
 		vTaskDelete(taskHandle);
 		taskHandle = nullptr;

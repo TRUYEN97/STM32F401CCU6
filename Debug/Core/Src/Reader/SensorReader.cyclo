@@ -1,15 +1,21 @@
+../Core/Inc/Json/Strings/Adapters/RamString.hpp:34:8:char ArduinoJson::V721HB22::detail::ZeroTerminatedRamString::operator[](size_t) const	1
+../Core/Inc/Json/Strings/Adapters/RamString.hpp:102:8:char ArduinoJson::V721HB22::detail::SizedRamString::operator[](size_t) const	1
+C:\ST\STM32CubeIDE_1.17.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130\tools\arm-none-eabi\include\c++\12.3.1\arm-none-eabi\thumb\v7e-m+fp\hard\bits\gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	1
 ../Core/Inc/Reader/IRQ/IRQTask.h:12:7:IRQTask::~IRQTask()	1
 ../Core/Inc/Reader/IRQ/IRQTask.h:12:7:virtual IRQTask::~IRQTask()	1
 ../Core/Src/Reader/SensorReader.cpp:11:1:SensorReader::SensorReader()	1
-../Core/Src/Reader/SensorReader.cpp:24:1:SensorReader::~SensorReader()	1
-../Core/Src/Reader/SensorReader.cpp:24:1:virtual SensorReader::~SensorReader()	1
-../Core/Src/Reader/SensorReader.cpp:27:6:void SensorReader::handleInterrupt(uint16_t)	1
-../Core/Src/Reader/SensorReader.cpp:32:20:const SensorModel& SensorReader::getSensorModel() const	1
-../Core/Src/Reader/SensorReader.cpp:36:15:static SensorReader& SensorReader::getInstance()	5
-../Core/Src/Reader/SensorReader.cpp:51:5:int SensorReader::getGearNumber()	7
-../Core/Src/Reader/SensorReader.cpp:76:6:virtual void SensorReader::run()	2
-../Core/Src/Reader/SensorReader.cpp:97:6:virtual void SensorReader::stop()	1
-../Core/Src/Reader/SensorReader.cpp:103:6:void HAL_GPIO_EXTI_Callback(uint16_t)	1
+../Core/Src/Reader/SensorReader.cpp:25:1:SensorReader::~SensorReader()	1
+../Core/Src/Reader/SensorReader.cpp:25:1:virtual SensorReader::~SensorReader()	1
+../Core/Src/Reader/SensorReader.cpp:28:6:void SensorReader::handleInterrupt(uint16_t)	1
+../Core/Src/Reader/SensorReader.cpp:33:14:SensorModel* SensorReader::getSensorModel()	1
+../Core/Src/Reader/SensorReader.cpp:37:15:static SensorReader& SensorReader::getInstance()	5
+../Core/Src/Reader/SensorReader.cpp:52:5:int SensorReader::getGearNumber()	7
+../Core/Src/Reader/SensorReader.cpp:77:6:virtual void SensorReader::run()	2
+../Core/Src/Reader/SensorReader.cpp:98:6:virtual void SensorReader::stop()	1
+../Core/Src/Reader/SensorReader.cpp:104:6:void HAL_GPIO_EXTI_Callback(uint16_t)	1
+../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = StaticStringAdapter]	2
+../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = JsonStringAdapter]	2
+../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = SizedRamString]	2
 ../Core/Inc/Reader/IRQ/EncoderTash.h:16:7:EncoderTask::~EncoderTask()	1
 ../Core/Inc/Reader/IRQ/EncoderTash.h:16:7:virtual EncoderTask::~EncoderTask()	1
 ../Core/Inc/Reader/IRQ/RpmTask.h:13:7:RpmTask::~RpmTask()	1
