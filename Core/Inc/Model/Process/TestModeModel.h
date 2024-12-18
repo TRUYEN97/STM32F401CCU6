@@ -38,14 +38,15 @@ public:
 	void setStartTime(const char *startTime);
 	void setEndTime(const char *endTime);
 	void setScore(int8_t score);
-	void setLocation(const LocationModel* location);
+	void setLocation(const LocationModel *location);
 	void setContestResult(int8_t contestResult);
 	void subtractScore(uint8_t score);
 	void setCycleTime(unsigned long cycleTime);
 	void setDistance(double distance);
-	void addErrorCode(const ErrorCode* errorCode);
-	void addContestModel(const ContestModel* contestModel);
-	void reset();
+	void addErrorCode(const ErrorCode *errorCode);
+	void addContestModel(const ContestModel *contestModel);
+	virtual void reset() override;
+	virtual void clear();
 
 	const char* getCarId() const;
 	const char* getStartTime() const;
@@ -54,9 +55,9 @@ public:
 	int8_t getContestResult() const;
 	unsigned long getCycleTime() const;
 	double getDistance() const;
-	const LocationModel* getLocation();
-	JsonArrayConst& getErrorCodes() const;
-	JsonArrayConst& getContestModels() const;
+	JsonObjectConst getLocation() const;
+	JsonArrayConst getErrorCodes() const;
+	JsonArrayConst getContestModels() const;
 
 	virtual void updateModel(const JsonDocument *json) override;
 };

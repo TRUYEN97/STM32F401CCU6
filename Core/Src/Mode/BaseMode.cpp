@@ -9,7 +9,7 @@
 
 BaseMode::BaseMode(const char *name, uint16_t taskSize, UBaseType_t priority) :
 		MyRTOSTask(name, nullptr, nullptr, taskSize, priority), contests(
-				xQueueCreate(20, sizeof(BaseContest))) {
+				xQueueCreate(20, sizeof(BaseContest*))) {
 	this->endTest = false;
 }
 
@@ -23,6 +23,10 @@ void BaseMode::run() {
 	}
 	this->closeMode();
 }
+bool BaseMode::addContestToQueue(BaseContest &contest) {
+	BaseContest *baseContest = contest;
+	xQueueSend(contest, (void* ) &baseContest, (TickType_t ) 0);
+}
 
 void BaseMode::begin() {
 	while (!this->isCanTest() && !this->stopTask) {
@@ -34,16 +38,19 @@ void BaseMode::test() {
 	BaseContest *contest = nullptr;
 	this->endTest = false;
 	while (stopTask && !endTest) {
-		if (xQueueReceive(contests, contest, pdMS_TO_TICKS(100)) == pdPASS
-				&& contest != nullptr) {
-			while (!endTest && contest->isBegin()) {
-				delay(10);
-			}
-			while (!endTest && contest->test()) {
-				delay(10);
-			}
-			contest->end();
+		if (xQueueReceive(contests, &contest, pdMS_TO_TICKS(100)) != pdPASS) {
+			continue;
 		}
+		if (contest == nullptr) {
+			continue;
+		}
+		while (!endTest && contest->isBegin()) {
+			delay(10);
+		}
+		while (!endTest && contest->test()) {
+			delay(10);
+		}
+		contest->end();
 	}
 }
 

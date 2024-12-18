@@ -10,8 +10,10 @@ ModelManagement *ModelManagement::instance = nullptr;
 SemaphoreHandle_t ModelManagement::mutex = nullptr;
 
 ModelManagement::ModelManagement() :
-		sensorModel(new SensorModel()), testModeModel(new TestModeModel()) {
-
+		sensorModel(new SensorModel()),
+		testModeModel(new TestModeModel()),
+		locationModel(new LocationModel(0,0)) {
+	this->testModeModel->setLocation(this->locationModel);
 }
 ModelManagement::~ModelManagement() {
 
@@ -35,6 +37,10 @@ SensorModel* ModelManagement::getSensorModel() {
 	return sensorModel;
 }
 
-TestModeModel* ModelManagement::getTestModeModel(){
+LocationModel* ModelManagement::getLocationModel() {
+	return locationModel;
+}
+
+TestModeModel* ModelManagement::getTestModeModel() {
 	return testModeModel;
 }

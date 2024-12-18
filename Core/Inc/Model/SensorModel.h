@@ -17,17 +17,16 @@ class SensorModel {
 	EncodeModel *encodeModel;
 public:
 	SensorModel();
+	~SensorModel();
 	bool isAt() const;
 
 	void setAt(bool at);
 
-	EncodeModel& getEncodeModel() const;
+	EncodeModel* getEncodeModel() const;
 
 	void setDistance(float distance);
 
 	void resetDistance();
-
-	void setEncodeModel(EncodeModel *encodeModel);
 
 	bool isCm() const;
 

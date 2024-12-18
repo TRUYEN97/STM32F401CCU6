@@ -1,9 +1,10 @@
 #include "Reader/IRQ/EncoderTash.h"
 
-EncoderTask::EncoderTask(double scala) :
+EncoderTask::EncoderTask(EncodeModel *encoderModel, double scala) :
 		IRQTask("EncoderTask", nullptr, nullptr, 64, 1), aPin(
 				MyPin(GPIOB, GPIO_PIN_0)), bPin(MyPin(GPIOB, GPIO_PIN_1)), scala(
-				scala == 0 ? 1.0f : scala), encoderModel(), timer(200) {
+				scala == 0 ? 1.0f : scala), encoderModel(encoderModel), timer(
+				200) {
 	this->count = 0;
 	this->hasCallA = false;
 }
@@ -42,21 +43,21 @@ EncodeModel* EncoderTask::getEncoderModel() {
 		this->count = 0;
 		this->timer.reset();
 		if (tempCount == 0 || deltaTimeS == 0) {
-			this->encoderModel.setSpeed(0);
-			this->encoderModel.setCarStatus(CAR_STOP);
+			this->encoderModel->setSpeed(0);
+			this->encoderModel->setCarStatus(CAR_STOP);
 		} else {
-			this->encoderModel.setDistance(
-					this->encoderModel.getDistance() + tempCount / this->scala);
+			this->encoderModel->setDistance(
+					this->encoderModel->getDistance() + tempCount / this->scala);
 			if (tempCount > 0) {
-				this->encoderModel.setSpeed(
+				this->encoderModel->setSpeed(
 						tempCount * 3.6 / this->scala / deltaTimeS);
-				this->encoderModel.setCarStatus(CAR_FORWARD);
+				this->encoderModel->setCarStatus(CAR_FORWARD);
 			} else {
-				this->encoderModel.setSpeed(
+				this->encoderModel->setSpeed(
 						tempCount * -3.6 / this->scala / deltaTimeS);
-				this->encoderModel.setCarStatus(CAR_BACKWARD);
+				this->encoderModel->setCarStatus(CAR_BACKWARD);
 			}
 		}
 	}
-	return &this->encoderModel;
+	return this->encoderModel;
 }

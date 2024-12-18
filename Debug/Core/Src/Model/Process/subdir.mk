@@ -6,16 +6,25 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Core/Src/Model/Process/BaseModel.cpp \
+../Core/Src/Model/Process/ContestModel.cpp \
+../Core/Src/Model/Process/ErrorCode.cpp \
+../Core/Src/Model/Process/LocationModel.cpp \
 ../Core/Src/Model/Process/TestModeModel.cpp \
 ../Core/Src/Model/Process/UserModel.cpp 
 
 OBJS += \
 ./Core/Src/Model/Process/BaseModel.o \
+./Core/Src/Model/Process/ContestModel.o \
+./Core/Src/Model/Process/ErrorCode.o \
+./Core/Src/Model/Process/LocationModel.o \
 ./Core/Src/Model/Process/TestModeModel.o \
 ./Core/Src/Model/Process/UserModel.o 
 
 CPP_DEPS += \
 ./Core/Src/Model/Process/BaseModel.d \
+./Core/Src/Model/Process/ContestModel.d \
+./Core/Src/Model/Process/ErrorCode.d \
+./Core/Src/Model/Process/LocationModel.d \
 ./Core/Src/Model/Process/TestModeModel.d \
 ./Core/Src/Model/Process/UserModel.d 
 
@@ -27,7 +36,7 @@ Core/Src/Model/Process/%.o Core/Src/Model/Process/%.su Core/Src/Model/Process/%.
 clean: clean-Core-2f-Src-2f-Model-2f-Process
 
 clean-Core-2f-Src-2f-Model-2f-Process:
-	-$(RM) ./Core/Src/Model/Process/BaseModel.cyclo ./Core/Src/Model/Process/BaseModel.d ./Core/Src/Model/Process/BaseModel.o ./Core/Src/Model/Process/BaseModel.su ./Core/Src/Model/Process/TestModeModel.cyclo ./Core/Src/Model/Process/TestModeModel.d ./Core/Src/Model/Process/TestModeModel.o ./Core/Src/Model/Process/TestModeModel.su ./Core/Src/Model/Process/UserModel.cyclo ./Core/Src/Model/Process/UserModel.d ./Core/Src/Model/Process/UserModel.o ./Core/Src/Model/Process/UserModel.su
+	-$(RM) ./Core/Src/Model/Process/BaseModel.cyclo ./Core/Src/Model/Process/BaseModel.d ./Core/Src/Model/Process/BaseModel.o ./Core/Src/Model/Process/BaseModel.su ./Core/Src/Model/Process/ContestModel.cyclo ./Core/Src/Model/Process/ContestModel.d ./Core/Src/Model/Process/ContestModel.o ./Core/Src/Model/Process/ContestModel.su ./Core/Src/Model/Process/ErrorCode.cyclo ./Core/Src/Model/Process/ErrorCode.d ./Core/Src/Model/Process/ErrorCode.o ./Core/Src/Model/Process/ErrorCode.su ./Core/Src/Model/Process/LocationModel.cyclo ./Core/Src/Model/Process/LocationModel.d ./Core/Src/Model/Process/LocationModel.o ./Core/Src/Model/Process/LocationModel.su ./Core/Src/Model/Process/TestModeModel.cyclo ./Core/Src/Model/Process/TestModeModel.d ./Core/Src/Model/Process/TestModeModel.o ./Core/Src/Model/Process/TestModeModel.su ./Core/Src/Model/Process/UserModel.cyclo ./Core/Src/Model/Process/UserModel.d ./Core/Src/Model/Process/UserModel.o ./Core/Src/Model/Process/UserModel.su
 
 .PHONY: clean-Core-2f-Src-2f-Model-2f-Process
 

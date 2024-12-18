@@ -9,18 +9,24 @@
 
 SensorModel::SensorModel() :
 		nt(false), np(false), cm(false), at(false), pt(false), t1(false), t2(
-				false), t3(false), gear(0), rpm(0), encodeModel(nullptr) {
+				false), t3(false), gear(0), rpm(0), encodeModel(
+				new EncodeModel()) {
+}
+SensorModel::~SensorModel() {
+	if (this->encodeModel != nullptr) {
+		delete this->encodeModel;
+	}
 }
 
 bool SensorModel::isAt() const {
 	return at;
 }
 
-void SensorModel::setDistance(float distance){
+void SensorModel::setDistance(float distance) {
 	this->encodeModel->setDistance(distance);
 }
 
-void SensorModel::resetDistance(){
+void SensorModel::resetDistance() {
 	this->encodeModel->resetDistance();
 }
 
@@ -28,12 +34,8 @@ void SensorModel::setAt(bool at) {
 	this->at = at;
 }
 
-EncodeModel& SensorModel::getEncodeModel() const {
-	return *(this->encodeModel);
-}
-
-void SensorModel::setEncodeModel(EncodeModel *encodeModel) {
-	this->encodeModel = encodeModel;
+EncodeModel* SensorModel::getEncodeModel() const {
+	return this->encodeModel;
 }
 
 bool SensorModel::isCm() const {

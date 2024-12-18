@@ -19,7 +19,7 @@ class EncoderTask: public IRQTask {
 	int32_t count;
 	bool hasCallA;
 	double scala;
-	EncodeModel encoderModel;
+	EncodeModel *encoderModel;
 	TimeTicker timer;
 protected:
 	void callA();
@@ -28,7 +28,7 @@ protected:
 	bool isExactly(uint16_t pin);
 public:
 	void setScale(double scale);
-	EncoderTask(double scala = 1);
+	EncoderTask(EncodeModel *encoderModel, double scala = 1);
 	EncodeModel* getEncoderModel();
 };
 

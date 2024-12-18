@@ -33,6 +33,8 @@ public:
 	void setDateOfBirth(const char *dateOfBirth);
 	void setPlaceOfOrigin(const char *placeOfOrigin);
 	void setSex(int8_t sex);
+	virtual void reset() override;
+	virtual void clear();
 
 	const char* getId() const;
 	const char* getName() const;

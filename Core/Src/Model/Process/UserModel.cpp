@@ -9,7 +9,7 @@
 
 UserModel::UserModel() :
 		BaseModel() {
-
+	this->reset();
 }
 
 void UserModel::setId(const char *id) {
@@ -44,34 +44,58 @@ void UserModel::setSex(int8_t sex) {
 }
 
 const char* UserModel::getId() const {
-	return this->data[ID].as<const char*>();
+	return this->getOrDefault<const char*>(ID, "");
 }
 const char* UserModel::getName() const {
-	return this->data[NAME].as<const char*>();
+	return this->getOrDefault<const char*>(NAME, "");
 }
 const char* UserModel::getExamId() const {
-	return this->data[EXAM_ID].as<const char*>();
+	return this->getOrDefault<const char*>(EXAM_ID, "");
 }
 const char* UserModel::getExamStatus() const {
-	return this->data[EXAM_STATUS].as<const char*>();
+	return this->getOrDefault<const char*>(EXAM_STATUS, "");
 }
 const char* UserModel::getModeName() const {
-	return this->data[MODE_NAME].as<const char*>();
+	return this->getOrDefault<const char*>(MODE_NAME, "");
 }
 const char* UserModel::getRank() const {
-	return this->data[RANK].as<const char*>();
+	return this->getOrDefault<const char*>(RANK, "");
 }
 const char* UserModel::getMobile() const {
-	return this->data[MOBILE].as<const char*>();
+	return this->getOrDefault<const char*>(MOBILE, "");
 }
 const char* UserModel::getPlaceOfOrigin() const {
-	return this->data[PLACE_OF_ORIGIN].as<const char*>();
+	return this->getOrDefault<const char*>(PLACE_OF_ORIGIN, "");
 }
 const char* UserModel::setDateOfBirth() const {
-	return this->data[DATE_OF_BIRTH].as<const char*>();
+	return this->getOrDefault<const char*>(DATE_OF_BIRTH, "");
 }
 int8_t UserModel::getSex() const {
-	return this->data[SEX].as<int8_t>();
+	return this->getOrDefault<int8_t>(NAME, 0);
+}
+void UserModel::clear() {
+	this->setId("");
+	this->setName("");
+	this->setExamId("");
+	this->setExamStatus("");
+	this->setModeName("");
+	this->setRank("");
+	this->setMobile("");
+	this->setPlaceOfOrigin("");
+	this->setDateOfBirth("");
+	this->setSex(0);
+}
+void UserModel::reset() {
+	this->setId("0");
+	this->setName("");
+	this->setExamId("0");
+	this->setExamStatus("");
+	this->setModeName("");
+	this->setRank("");
+	this->setMobile("");
+	this->setPlaceOfOrigin("");
+	this->setDateOfBirth("");
+	this->setSex(0);
 }
 
 void UserModel::updateModel(const JsonDocument *json) {

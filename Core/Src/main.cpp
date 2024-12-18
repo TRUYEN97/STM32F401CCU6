@@ -275,7 +275,7 @@ void StartDefaultTask(void *argument) {
 	/* Infinite loop */
 	SensorModel &sensorModel =
 			*ModelManagement::getInstance().getSensorModel();
-	EncodeModel &encodeModel = sensorModel.getEncodeModel();
+	EncodeModel &encodeModel = *sensorModel.getEncodeModel();
 	TimeTicker timer(5000);
 	doc["test"] = 0;
 	for (;;) {

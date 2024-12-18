@@ -8,10 +8,9 @@
 
 BaseModel::BaseModel() :
 		data() {
-
 }
 
-const JsonDocument& BaseModel::toJson() const{
+const JsonDocument& BaseModel::toJson() const {
 	return this->data;
 }
 

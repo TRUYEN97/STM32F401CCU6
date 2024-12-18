@@ -8,7 +8,7 @@
 
 TestModeModel::TestModeModel() :
 		UserModel(), mutex(xSemaphoreCreateMutex()) {
-
+	this->clear();
 }
 
 void TestModeModel::setCarId(const char *carId) {
@@ -46,7 +46,7 @@ void TestModeModel::setDistance(double distance) {
 }
 
 void TestModeModel::setCycleTime(unsigned long cycleTime) {
-	this->data[CYCLE_TIME] = cycleTime;
+	this->data[CYCLE_TIME] = cycleTime < 0 ? 0: cycleTime;
 }
 
 void TestModeModel::subtractScore(uint8_t score) {
@@ -72,7 +72,7 @@ void TestModeModel::addContestModel(const ContestModel *contestModel) {
 
 void TestModeModel::setLocation(const LocationModel *location) {
 	if (location == nullptr) {
-		this->data[LOCATION] = NULL;
+		this->data.remove(LOCATION);
 	}
 	this->data[LOCATION] = location->toJson();
 }
@@ -96,12 +96,44 @@ double TestModeModel::getDistance() const {
 	return this->getOrDefault<double>(DISTANCE, 0);
 }
 unsigned long TestModeModel::getCycleTime() const {
-	return this->getOrDefault<unsigned long>(CYCLE_TIME, TEST_RUNNING);
+	return this->getOrDefault<unsigned long>(CYCLE_TIME, 0);
+}
+JsonObjectConst TestModeModel::getLocation() const {
+	return this->data[LOCATION];
 }
 
-//const LocationModel* TestModeModel::getLocation() {
-//	this->getOrDefault<const JsonDocument*>(CYCLE_TIME, TEST_RUNNING);
-//}
+JsonArrayConst TestModeModel::getErrorCodes() const {
+	return this->data[ERROR_CODES];
+}
+JsonArrayConst TestModeModel::getContestModels() const {
+	return this->data[CONTESTS];
+}
+
+void TestModeModel::reset() {
+	UserModel::clear();
+	this->setStartTime("");
+	this->setEndTime("");
+	this->setCycleTime(0);
+	this->setScore(100);
+	this->setContestResult(TEST_RUNNING);
+	this->setDistance(0);
+	this->data.remove(LOCATION);
+	this->data.remove(ERROR_CODES);
+	this->data.remove(CONTESTS);
+}
+
+void TestModeModel::clear() {
+	UserModel::clear();
+	this->setStartTime("");
+	this->setEndTime("");
+	this->setCycleTime(0);
+	this->setScore(0);
+	this->setContestResult(TEST_RUNNING);
+	this->setDistance(0);
+	this->data.remove(LOCATION);
+	this->data.remove(ERROR_CODES);
+	this->data.remove(CONTESTS);
+}
 
 void TestModeModel::updateModel(const JsonDocument *json) {
 	if (json == nullptr) {
@@ -119,5 +151,18 @@ void TestModeModel::updateModel(const JsonDocument *json) {
 	this->setContestResult(
 			getFormJsonVariant<int8_t>(jsonData[CONTESTS_RESULT], 0));
 	this->setDistance(getFormJsonVariant<double>(jsonData[DISTANCE], 0));
+	this->data[LOCATION].set(jsonData[LOCATION]);
+	/////////////////////////
+	JsonArrayConst errorCodes;
+	errorCodes = getFormJsonVariant<JsonArrayConst>(jsonData[ERROR_CODES],
+			errorCodes);
+	this->data.remove(ERROR_CODES);
+	this->data[ERROR_CODES].set<JsonArrayConst>(errorCodes);
+	/////////////////
+	JsonArrayConst contests;
+	contests = getFormJsonVariant<JsonArrayConst>(jsonData[CONTESTS], contests);
+	this->data.remove(CONTESTS);
+	this->data[CONTESTS].set<JsonArrayConst>(contests);
 }
+;
 

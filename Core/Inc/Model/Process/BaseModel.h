@@ -28,6 +28,7 @@ public:
 	inline T getOrDefault(const char *key, const T &defaultValue) const {
 		return this->data[key].is<T>() ? this->data[key].as<T>() : defaultValue;
 	}
+	virtual void reset()=0;
 	virtual const JsonDocument& toJson() const;
 	virtual std::string toString() const;
 	virtual void updateModel(const JsonDocument *json) = 0;

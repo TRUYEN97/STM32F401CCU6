@@ -4,15 +4,15 @@ C:\ST\STM32CubeIDE_1.17.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 ../Core/Inc/Reader/IRQ/IRQTask.h:12:7:IRQTask::~IRQTask()	1
 ../Core/Inc/Reader/IRQ/IRQTask.h:12:7:virtual IRQTask::~IRQTask()	1
 ../Core/Src/Reader/SensorReader.cpp:11:1:SensorReader::SensorReader()	1
-../Core/Src/Reader/SensorReader.cpp:25:1:SensorReader::~SensorReader()	1
-../Core/Src/Reader/SensorReader.cpp:25:1:virtual SensorReader::~SensorReader()	1
-../Core/Src/Reader/SensorReader.cpp:28:6:void SensorReader::handleInterrupt(uint16_t)	1
-../Core/Src/Reader/SensorReader.cpp:33:14:SensorModel* SensorReader::getSensorModel()	1
-../Core/Src/Reader/SensorReader.cpp:37:15:static SensorReader& SensorReader::getInstance()	5
-../Core/Src/Reader/SensorReader.cpp:52:5:int SensorReader::getGearNumber()	7
-../Core/Src/Reader/SensorReader.cpp:77:6:virtual void SensorReader::run()	2
-../Core/Src/Reader/SensorReader.cpp:98:6:virtual void SensorReader::stop()	1
-../Core/Src/Reader/SensorReader.cpp:104:6:void HAL_GPIO_EXTI_Callback(uint16_t)	1
+../Core/Src/Reader/SensorReader.cpp:24:1:SensorReader::~SensorReader()	1
+../Core/Src/Reader/SensorReader.cpp:24:1:virtual SensorReader::~SensorReader()	1
+../Core/Src/Reader/SensorReader.cpp:27:6:void SensorReader::handleInterrupt(uint16_t)	1
+../Core/Src/Reader/SensorReader.cpp:32:14:SensorModel* SensorReader::getSensorModel()	1
+../Core/Src/Reader/SensorReader.cpp:36:15:static SensorReader& SensorReader::getInstance()	5
+../Core/Src/Reader/SensorReader.cpp:51:5:int SensorReader::getGearNumber()	7
+../Core/Src/Reader/SensorReader.cpp:76:6:virtual void SensorReader::run()	2
+../Core/Src/Reader/SensorReader.cpp:97:6:virtual void SensorReader::stop()	1
+../Core/Src/Reader/SensorReader.cpp:103:6:void HAL_GPIO_EXTI_Callback(uint16_t)	1
 ../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = StaticStringAdapter]	2
 ../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = JsonStringAdapter]	2
 ../Core/Inc/Json/Strings/StringAdapters.hpp:66:13:void ArduinoJson::V721HB22::detail::stringGetChars(TAdaptedString, char*, size_t) [with TAdaptedString = SizedRamString]	2

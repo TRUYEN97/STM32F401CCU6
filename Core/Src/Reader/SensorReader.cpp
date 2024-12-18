@@ -15,11 +15,10 @@ SensorReader::SensorReader() :
 				MyPin(GPIOA, GPIO_PIN_5, 666)), s1Pin(MyPin(GPIOA, GPIO_PIN_6)), s2Pin(
 				MyPin(GPIOA, GPIO_PIN_7)), s3Pin(MyPin(GPIOA, GPIO_PIN_8)), s4Pin(
 				MyPin(GPIOB, GPIO_PIN_10)), t1Pin(MyPin(GPIOB, GPIO_PIN_12)), t2Pin(
-				MyPin(GPIOB, GPIO_PIN_13)), t3Pin(MyPin(GPIOB, GPIO_PIN_14)),
-				sensorModel(ModelManagement::getInstance().getSensorModel()), encoderTask(
-				EncoderTask(100.5)), rpmTask(RpmTask(1)) {
-	EncodeModel *enncoderModel = this->encoderTask.getEncoderModel();
-	this->sensorModel->setEncodeModel(enncoderModel);
+				MyPin(GPIOB, GPIO_PIN_13)), t3Pin(MyPin(GPIOB, GPIO_PIN_14)), sensorModel(
+				ModelManagement::getInstance().getSensorModel()), encoderTask(
+				EncoderTask(this->sensorModel->getEncodeModel(), 100.5)), rpmTask(
+				RpmTask(1)) {
 }
 
 SensorReader::~SensorReader() {

@@ -15,6 +15,7 @@
 class ModelManagement {
 	SensorModel *sensorModel;
 	TestModeModel *testModeModel;
+	LocationModel *locationModel;
 	static ModelManagement *instance;
 	static SemaphoreHandle_t mutex;
 	ModelManagement();
@@ -25,6 +26,7 @@ public:
 	static ModelManagement& getInstance();
 	SensorModel* getSensorModel();
 	TestModeModel* getTestModeModel();
+	LocationModel* getLocationModel();
 };
 
 #endif /* INC_MODEL_MODELMANAGEMENT_H_ */
